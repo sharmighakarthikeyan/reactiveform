@@ -1,0 +1,83 @@
+<div class="container">
+    <form [formGroup]="contactform" (submit)="Detailssubmit(contactform)">
+    <h3>reactive form</h3><br><br>
+    <p class="form-group">
+        <label for="firstname">Firstname</label><br>
+        <input class="form-control" type="text" id="firstname" name="firstname" formControlName="firstName">
+    </p>
+    <span class="text-danger" *ngIf="first?.valid==false && first?.touched ">
+      
+       invalid name
+    </span> 
+    <span class="text-danger" *ngIf="first?.errors?.['maxlength']">
+       max length 10
+    </span>
+    <span class="text-danger" *ngIf="first?.errors?.['required']">
+        first name required
+    </span>
+
+    
+    
+    <p class="form-group">
+        <label for="lastname">Lastname</label><br>
+        <input  class="form-control" type="text" id="lastname" name="lastname" formControlName="lastName">
+    </p>
+
+
+    <p class="form-group">
+        <label for="email">Email</label><br>
+        <input class="form-control" type="text" id="email" name="email" formControlName="email">
+    </p><br><br>
+
+
+    <p class="form-group">
+        <label for="gender">Gender</label><br>
+        <input [ngStyle]="{'accent-color':'red'}" type="radio" id="gender" name="gender" value="male" formControlName="gender">Male
+        <input [ngStyle]="{'accent-color':'red'}" type="radio" id="gender" name="gender" value="female" formControlName="gender">Female
+    </p><br><br>
+
+
+    <p class="form-group">
+        <label for="ismarried">IsMarried</label><br>
+        <input  type="checkbox" id="ismarried" formControlName="isMarried">
+    </p><br><br>
+
+
+    <p class="form-group">
+        <label for="country">country</label><br>
+      <select id="country" name="country" formControlName="country">
+        <option>select</option>
+        <option [ngValue]="loc.id" *ngFor="let loc of countrys">{{loc.name}}</option>
+      </select>
+    </p><br><br>
+
+
+<div formGroupName="address">
+
+    <p class="form-group">
+        <label for="city">City</label><br>
+        <input class="form-control" type="text" id="city" name="city" formControlName="city">
+    </p><br><br>
+
+    <p class="form-group">
+        <label for="street">street</label><br>
+        <input class="form-control"type="text" id="street" name="street" formControlName="street">
+    </p><br><br>
+
+    
+    <p class="form-group">
+        <label for="pincode">pincode</label><br>
+        <input class="form-control" type="text" id="pincode" name="pincode" formControlName="pincode">
+    </p><br><br>
+
+</div>
+
+
+
+
+<button type="submit" [disabled]="!contactform.valid">submit</button>
+
+<br><br><br><br><br><br><br>
+
+</form>
+</div>
